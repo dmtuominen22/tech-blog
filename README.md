@@ -24,3 +24,5 @@
   Denise Tuominen
   
   dmtuominen@gmail.com 
+
+  need to add an image of the project
