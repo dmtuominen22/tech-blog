@@ -4,29 +4,31 @@ const router = require('express').Router();
 
 router.get('/', (req, res) => {
     Post.findAll({
-            attributes: [
-                'id',
-                'title',
-                'content',
-                'created_at'
-            ],
-            include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username']
-                }
-            ]
-        })
+        attributes: [
+            'id',
+            'title',
+            'created_at'
+        ],
+        include: [{
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
+        {
+            model: User,
+            attributes: ['username']
+        }
+        ]
+    })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
-            res.render('homepage', { posts, loggedIn: req.session.loggedIn });
+            res.render('home', {
+                posts,
+                loggedIn: req.session.loggedIn
+            });
         })
         .catch(err => {
             console.log(err);
@@ -48,29 +50,29 @@ router.get('/signup', (req, res) => {
 
 router.get('/post/:id', (req, res) => {
     Post.findOne({
-            where: {
-                id: req.params.id
-            },
-            attributes: [
-                'id',
-                'content',
-                'title',
-                'created_at'
-            ],
-            include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username']
-                }
-            ]
-        })
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'content',
+            'title',
+            'created_at'
+        ],
+        include: [{
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
+        {
+            model: User,
+            attributes: ['username']
+        }
+        ]
+    })
         .then(dbPostData => {
             if (!dbPostData) {
                 res.status(404).json({ message: 'No post found with this id' });
@@ -89,29 +91,29 @@ router.get('/post/:id', (req, res) => {
 });
 router.get('/posts-comments', (req, res) => {
     Post.findOne({
-            where: {
-                id: req.params.id
-            },
-            attributes: [
-                'id',
-                'content',
-                'title',
-                'created_at'
-            ],
-            include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['username']
-                    }
-                },
-                {
-                    model: User,
-                    attributes: ['username']
-                }
-            ]
-        })
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id',
+            'content',
+            'title',
+            'created_at'
+        ],
+        include: [{
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+        },
+        {
+            model: User,
+            attributes: ['username']
+        }
+        ]
+    })
         .then(dbPostData => {
             if (!dbPostData) {
                 res.status(404).json({ message: 'No post found with this id' });
