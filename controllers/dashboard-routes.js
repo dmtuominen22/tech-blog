@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) => {
             attributes: [
                 'id',
                 'title',
-                'content',
+                // 'content',
                 'created_at'
             ],
             include: [{
@@ -37,6 +37,7 @@ router.get('/', withAuth, (req, res) => {
             res.status(500).json(err);
         });
 });
+
 router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
             where: {
@@ -74,7 +75,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-})
+});
+
 router.get('/new', (req, res) => {
     res.render('new-post');
 });
