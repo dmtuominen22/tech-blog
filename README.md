@@ -11,10 +11,9 @@
 ## Description
      This project is usage is a blog that you can sign up or sign in to create post to the blog.
     
-     ![tech blog](https://user-images.githubusercontent.com/84994258/135730753-137054eb-a04e-418b-bc85-ed19379ee85d.PNG)
-
-     ![blog-post](https://user-images.githubusercontent.com/84994258/135730768-ea909d56-10be-4fc1-a994-e9ed3f548530.PNG)
-
+![tech blog](https://user-images.githubusercontent.com/84994258/135731977-0238fe5b-d39f-471e-b354-ba9d62973f0b.PNG)
+   
+![blog-post](https://user-images.githubusercontent.com/84994258/135731989-b636be37-618d-4907-9e89-7efede0293de.PNG)
 
 
 ## GitHub
