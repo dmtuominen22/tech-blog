@@ -21,7 +21,7 @@
  https://github.com/dmtuominen22/tech-blog
 
 ## Website 
-https://git.heroku.com/infinite-taiga-25020.git
+https://infinite-taiga-25020.herokuapp.com/
 ## Languages
   JavaScript, handlebars.js, Node.js, MySQL, MVC, Heroku. Express.js, Sequelize ORM
 ## Installations
